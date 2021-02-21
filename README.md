@@ -1,25 +1,29 @@
-# jenkins-shared-library
-sample jenkins shared library to automate jobs in pipeline
+#### jenkins-shared-library
 
-(1) install jenkins on windows ==>
+### sample jenkins shared library to automate jobs in pipeline
 
-(a) download msi from here: https://www.jenkins.io/download/thank-you-downloading-windows-installer-stable/
-(b) login with admin and password here: file:///C:/WINDOWS/system32/config/systemprofile/AppData/Local/Jenkins.jenkins/secrets/initialAdminPassword
-(c) Install suggested plugins
-(d) set credentials: admin/admin
-(e) jenkins URL: http://localhost:8080/
+## (3) Creating shared library
 
-(2) Configure Azure VM as slave
+Added empty git repo: https://github.com/njain50/jenkins-shared-library
 
-(a) login to VM as root
-(b) mkdir -p /cs/devtooling/jenkins/ws
-(c) sudo useradd -d /var/lib/jenkins jenkins , passwd jenkins 
-(c) if swap if zero, can refer here https://ghanshammahajan.com/how-to-add-a-swap-space-in-linux-azure-virtual-machines/
-(d) Manage Jenkins ==> Manage Node ==> New Node ==> azurevm
-(e) install following packages on ubuntu azure vm: sudo apt-get install openjdk-8-jre
-(f) Refer here https://yallalabs.com/devops/how-to-add-linux-slave-node-agent-node-jenkins/ for final configuration. 
+This is how our shared library dir structure looks like: 
+├── jenkins-shared-library
+│   ├── src
+│   │   ├── org
+│   │   │   ├── example
+│   ├── vars
 
-(3) 
+git clone and open in IntelliJ. 
+Create dir structure same as above. 
+
+(4) In Jenkins, go to Manage Jenkins &rarr; Configure System. Under _Global Pipeline Libraries_, add a library with the following settings:
+    
+        - Name: `pipeline-library-demo`
+        - Default version: Specify a Git reference (branch or commit SHA), e.g. `master`
+        - Retrieval method: _Modern SCM_
+        - Select the _Git_ type
+        - Project repository: `https://github.com/monodot/pipeline-library-demo.git`
+        - Credentials: (leave blank)
  
 
 
